@@ -14,11 +14,12 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    node.cpp \
-    linkedlist.cpp
+    linkedlist.cpp \
+    hashtables.cpp
 
 HEADERS  += mainwindow.h \
     node.h \
-    linkedlist.h
+    linkedlist.h \
+    hashtables.h
 
 FORMS    += mainwindow.ui

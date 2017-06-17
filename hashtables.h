@@ -5,20 +5,19 @@
 ///     * @author Raul Edgar Quispe Totocayo         ///                                                ///
 ///       * @brief this program using the libntl     ///
 //////////////////////////////////////////////////////*/
-//includes
+
+#ifndef HASHTABLES_H
+#define HASHTABLES_H
 #include <linkedlist.h>
 #include <node.h>
-#include <hashtables.h>
-#include "mainwindow.h"
-//includes
-#include <QApplication>
 #include <iostream>
-using namespace std;
-int main(int argc, char *argv[])
+template<typename hashType>
+class HashTables
 {
-    QApplication a(argc, argv);
-    MainWindow w;
-    w.show();
+public:
+    HashTables();
+private:
 
-    return a.exec();
-}
+};
+
+#endif // HASHTABLES_H
