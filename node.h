@@ -11,18 +11,20 @@
 #include <iostream>
 #include <linkedlist.h>
 template <typename T> class LinkedList;
+template <typename T> class HashTables;
 template <typename T>
 class Node
 {
-    friend class LinkedList<T>;
+    friend class LinkedList<T>;//the class linkedlist is friend of the node  class
+    friend class HashTables<T>;//
 public:
-    Node(T &d,T &k)//construct
-        :data(d),k(key),nextPtr(nullptr){}//initialization
+    Node(T &d,int &k)//construct
+        :data(d),key(k),nextPtr(nullptr){}//initialization
     T getData()//this function return data
     {
         return this->data;
     }
-    T getKey()
+    int getKey()
     {
         return this->key;
     }
@@ -30,18 +32,18 @@ public:
     {
         this->data=d;
     }
-    Node getNextPtr()//this function return nextPtr
+    Node *getNextPtr()//this function return nextPtr
     {
         return this->nextPtr;
     }
-    void setNextPtr(Node ptr)
+    void setNextPtr(Node *ptr)
     {
         this->nextPtr=ptr;
     }
 
 private:
     T data;
-    T key;
+    int key;
     Node *nextPtr;
 
 };

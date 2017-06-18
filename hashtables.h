@@ -11,12 +11,37 @@
 #include <linkedlist.h>
 #include <node.h>
 #include <iostream>
-template<typename hashType>
+// T is NodeType
+const int HashTablesSize=128;
+template<typename T>
 class HashTables
 {
 public:
     HashTables();
+    ~HashTables();
+    //operator overload for print hashTable
+
+    void put(T &,int &);
+    void remove(int);
+    friend std::ostream & operator << (std::ostream & out,HashTables *hash)
+    {
+        for (int i = 0; i < HashTablesSize; ++i) {
+            Node<T> *temPtr=hash->table[i];
+            if(temPtr)
+            {
+                out <<"[" << i << "]-->" ;
+            }
+            while(temPtr)
+            {
+                out <<"(" << temPtr->getData() << "," << temPtr->getKey() << ")-->";
+                temPtr=temPtr->getNextPtr();
+            }
+        }
+        return out;
+    }
+
 private:
+    Node<T> **table;
 
 };
 
