@@ -39,7 +39,32 @@ void HashTables<T>::put(T &data, int &key)
     Node<T> *temPtr=table[hash];
     while(temPtr->getNextPtr())
     {
+        cout << "entro" << endl;
         temPtr=temPtr->getNextPtr();
     }
     temPtr->setNextPtr(new Node<T>(data,key));
+}
+template <typename T>
+void HashTables<T>::remove(int & key)
+{
+    int hash=(key%HashTablesSize);
+    if(!table[hash])
+        return;
+    else
+    {
+        Node<T> *temPtr=table[hash];
+        Node<T> *temPtrDelete=table[hash];
+        temPtr=temPtr->getNextPtr();
+        while(temPtrDelete->getNextPtr())
+        {
+            if(temPtrDelete->getKey()==key)
+            {
+                cout << "el ptr" << temPtrDelete->getData() << endl;
+                delete temPtrDelete;
+            }
+            table[hash]=temPtr;
+            temPtr=temPtr->getNextPtr();
+            temPtrDelete=table[hash];
+        }
+    }
 }

@@ -19,9 +19,17 @@ using namespace std;
 int main(int argc, char *argv[])
 {
     HashTables<int> *ptr= new HashTables<int>();
-    int a=45,b=2;
+    int a=45,b=2,c=130;
     ptr->put(a,b);
-    cout << "create a " << ptr;
+    a=a-10;
+    ptr->put(a,b);
+    a=a-10;
+    ptr->put(a,c);
+    ptr->put(a,b);
+    ptr->put(a,b);
+    ptr->remove(b);
+
+    cout << ptr;
     delete ptr;
     //cout << "hello" << endl;
     /*

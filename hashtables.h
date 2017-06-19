@@ -22,7 +22,7 @@ public:
     //operator overload for print hashTable
 
     void put(T &,int &);
-    void remove(int);
+    void remove(int &);
     friend std::ostream & operator << (std::ostream & out,HashTables *hash)
     {
         for (int i = 0; i < HashTablesSize; ++i) {
@@ -36,6 +36,9 @@ public:
                 out <<"(" << temPtr->getData() << "," << temPtr->getKey() << ")-->";
                 temPtr=temPtr->getNextPtr();
             }
+
+            if(hash->table[i])
+                out << '\n';
         }
         return out;
     }
