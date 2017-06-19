@@ -27,6 +27,7 @@ int main(int argc, char *argv[])
     ptr->put(a,c);
     ptr->put(a,b);
     ptr->put(a,b);
+    cout << ptr;
     ptr->remove(b);
 
     cout << ptr;

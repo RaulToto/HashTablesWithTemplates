@@ -55,16 +55,34 @@ void HashTables<T>::remove(int & key)
         Node<T> *temPtr=table[hash];
         Node<T> *temPtrDelete=table[hash];
         temPtr=temPtr->getNextPtr();
-        while(temPtrDelete->getNextPtr())
+        while(temPtr)
         {
-            if(temPtrDelete->getKey()==key)
+            if(table[hash]->getKey()==key)
             {
-                cout << "el ptr" << temPtrDelete->getData() << endl;
+                cout << "borrando " << temPtrDelete->getData() << "," << temPtrDelete->getKey() << endl;
                 delete temPtrDelete;
+                table[hash]=temPtr;
+                temPtr=temPtr->getNextPtr();
+                temPtrDelete=table[hash];
+
             }
-            table[hash]=temPtr;
-            temPtr=temPtr->getNextPtr();
-            temPtrDelete=table[hash];
+            else
+            {
+                cout << temPtrDelete->getData() << "," << temPtrDelete->getKey() << endl;
+                if(temPtr->getKey()==key)
+                {
+                    temPtrDelete->nextPtr=temPtr->getNextPtr();
+                    delete temPtr;
+                    temPtr=temPtrDelete->getNextPtr();
+                }
+                else
+                {
+                    temPtr=temPtr->getNextPtr();
+                    temPtrDelete=temPtrDelete->getNextPtr();
+                }
+
+            }
+
         }
     }
 }
